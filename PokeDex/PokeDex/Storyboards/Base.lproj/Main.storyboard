@@ -239,6 +239,14 @@
                         <viewLayoutGuide key="safeArea" id="VGw-uH-U3j"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pokemon Search" id="61D-Lm-kKd"/>
+                    <connections>
+                        <outlet property="abilitiesLabel" destination="kB4-hn-YQV" id="pBI-fr-A7b"/>
+                        <outlet property="idLabel" destination="7Hv-lc-yzq" id="DPc-Qc-XyI"/>
+                        <outlet property="imageView" destination="2ic-KA-Dqv" id="ijS-8I-YOy"/>
+                        <outlet property="nameLabel" destination="Bg1-Kh-p3U" id="pga-gr-BEr"/>
+                        <outlet property="searchBar" destination="J7g-Gg-R0X" id="2XZ-JF-Oc3"/>
+                        <outlet property="typesLabel" destination="Wvb-v6-yjF" id="qVd-29-Dvz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndN-su-T7I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

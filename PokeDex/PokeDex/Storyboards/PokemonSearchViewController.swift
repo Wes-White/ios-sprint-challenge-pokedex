@@ -10,12 +10,33 @@ import UIKit
 
 class PokemonSearchViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var typesLabel: UILabel!
+    @IBOutlet weak var abilitiesLabel: UILabel!
+    
+    var apiController = APIController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    
+    func updatePokemon() {
+        apiController.searchPokemon(with: "String") { (result) in
+            do {
+                let pokemon = try result.get()
+                self.apiController.pokemon
+                
+            } catch {
+                
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
