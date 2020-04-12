@@ -42,7 +42,6 @@ class PokemonDetailSearchViewController: UIViewController {
     
     func updateViews() {
         guard let pokemon = pokemon else { return }
-        
         var types = ""
         var abilities = ""
         
@@ -77,7 +76,19 @@ class PokemonDetailSearchViewController: UIViewController {
         saveButton.isHidden = false
         searchBar.isHidden = true
     }
+    
+    //MARK: Save pokemon to UITableView
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let pokemon = pokemon else { return }
+        print("THIS IS My NEW Pokemon", pokemon)
+        apiController.pokemons.append(pokemon)
+        print("This is my new array", apiController.pokemons)
+        navigationController?.popViewController(animated: true)
+    }
 }
+
+
+
 
 extension PokemonDetailSearchViewController: UISearchBarDelegate {
     
@@ -91,6 +102,15 @@ extension PokemonDetailSearchViewController: UISearchBarDelegate {
                 DispatchQueue.main.async {
                     self.updateViews()
                 }
+                
+                self.apiController.getPokeImage(urlString: pokemon.sprites.front_default, completion: { (result) in
+                    if let pokeImage = try? result.get() {
+                        DispatchQueue.main.async {
+                            self.pokeImageVIew.image = pokeImage
+                            self.updateViews()
+                        }
+                    }
+                })
                 
             } catch {
                 if let error = error as? APIController.APIErrors {

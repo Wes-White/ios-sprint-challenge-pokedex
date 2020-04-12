@@ -11,16 +11,20 @@ import UIKit
 class PokemonTableViewController: UITableViewController {
     
     let apiController = APIController()
-
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+        print("THIS IS FROM WILL APPEAR", apiController.pokemons.count)
+    }
+    
+  
 
     // MARK: - Table view data source
 
@@ -33,22 +37,7 @@ class PokemonTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath)
-        let pokemon = apiController.pokemons[indexPath.row]
-        cell.textLabel?.text = pokemon.name
-    
+        cell.textLabel?.text = apiController.pokemons[indexPath.row].name.uppercased()
         return cell
     }
- /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowPokemonSearch" {
-            if let PokemonSearchVC = segue.destination as? PokemonDetailSearchViewController {
-                PokemonSearchVC.apiController = apiController
-            }
-        }
-    }
-    
-    */
 }

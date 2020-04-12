@@ -23,9 +23,11 @@ class APIController {
         case get = "GET"
     }
     
-    var pokemons: [Pokemon] = []
-    
+    var pokemons: [Pokemon] = [Pokemon(name: "pikachu", id: 25, sprites: Pokedex.Sprite(front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"), types: [Pokedex.arrayOfTypes(type: Pokedex.Type(name: "electric"))], abilities: [Pokedex.arrayOfAbilities(ability: Pokedex.temp(name: "lightning-rod")), Pokedex.arrayOfAbilities(ability: Pokedex.temp(name: "static"))])]
+  
     var baseUrl = URL(string: "https://pokeapi.co/api/v2/pokemon")!
+    
+    
     
     func searchForPokemon(with searchTerm: String, completion: @escaping (Result<Pokemon, APIErrors>) -> Void) {
         
@@ -68,5 +70,35 @@ class APIController {
         }.resume()
     }
     
-  
+    func getPokeImage(urlString: String, completion: @escaping (Result<UIImage, APIErrors>) -> Void) {
+        
+        guard let imageUrl = URL(string: urlString) else {
+            NSLog("There was an error with the imageURL)")
+            completion(.failure(.badImageURL))
+            return
+        }
+        var request = URLRequest(url: imageUrl)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("There was an error communicating with the server: \(error)")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("There was an error from the returned data: \(error)")
+                completion(.failure(.noData))
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                NSLog("There was an error with the image file returned: \(error)")
+                completion(.failure(.noData))
+                return
+            }
+            completion(.success(image))
+        }.resume()
+    }
 }

@@ -112,7 +112,7 @@
                                         </constraints>
                                         <state key="normal" title="Save Pokemon"/>
                                         <connections>
-                                            <action selector="saveButtonTapped:" destination="FGP-Ge-GOP" eventType="touchUpInside" id="6Bv-h3-QiD"/>
+                                            <action selector="saveButtonTapped:" destination="FGP-Ge-GOP" eventType="touchUpInside" id="ROf-Vn-Cvz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -165,6 +165,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8oQ-eN-9Xz"/>
+        <segue reference="asl-hA-ur5"/>
     </inferredMetricsTieBreakers>
 </document>
