@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  PokeDex
+//  Pokedex
 //
-//  Created by Wesley Ryan on 4/10/20.
+//  Created by Wesley Ryan on 4/11/20.
 //  Copyright © 2020 Wesley Ryan. All rights reserved.
 //
 
