@@ -33,7 +33,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FGP-Ge-GOP" kind="show" identifier="ShowPokemonDetailSegue" id="asl-hA-ur5"/>
+                                    <segue destination="ubs-Qd-8Qp" kind="show" identifier="ShowDetailSegue" id="E7G-lB-qKZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -45,7 +45,7 @@
                     <navigationItem key="navigationItem" title="Pokedex" id="BRZ-b9-EKe">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="0Pj-tV-TGE">
                             <connections>
-                                <segue destination="FGP-Ge-GOP" kind="show" id="8oQ-eN-9Xz"/>
+                                <segue destination="FGP-Ge-GOP" kind="show" identifier="SearchSegue" id="8oQ-eN-9Xz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -53,6 +53,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RyN-zH-A6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44.927536231884062" y="126.5625"/>
+        </scene>
+        <!--Pokemon-->
+        <scene sceneID="MPn-8E-1Df">
+            <objects>
+                <viewController id="ubs-Qd-8Qp" customClass="PokeDetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aqs-0K-enk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9q-wk-4Q8">
+                                <rect key="frame" x="20" y="162" width="374" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XiP-gy-WiP">
+                                <rect key="frame" x="20" y="211" width="374" height="410"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9w-9N-kqD">
+                                <rect key="frame" x="20" y="695" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abilities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZE-Vq-LUc">
+                                <rect key="frame" x="20" y="739" width="374" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="AFR-kO-J1d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyq-dF-Fwl">
+                                <rect key="frame" x="20" y="654" width="374" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wt2-SH-1v5" firstAttribute="trailing" secondItem="u9q-wk-4Q8" secondAttribute="trailing" constant="20" id="0w4-oo-JHH"/>
+                            <constraint firstItem="Kyq-dF-Fwl" firstAttribute="top" secondItem="XiP-gy-WiP" secondAttribute="bottom" constant="33" id="26b-YT-JF5"/>
+                            <constraint firstItem="wt2-SH-1v5" firstAttribute="bottom" secondItem="uZE-Vq-LUc" secondAttribute="bottom" constant="85" id="2OF-91-rN5"/>
+                            <constraint firstItem="u9q-wk-4Q8" firstAttribute="leading" secondItem="wt2-SH-1v5" secondAttribute="leading" constant="20" id="2QL-jv-VTF"/>
+                            <constraint firstItem="u9q-wk-4Q8" firstAttribute="top" secondItem="wt2-SH-1v5" secondAttribute="top" constant="22" id="4zy-xq-3Yy"/>
+                            <constraint firstItem="uZE-Vq-LUc" firstAttribute="trailing" secondItem="P9w-9N-kqD" secondAttribute="trailing" id="88n-cB-bXP"/>
+                            <constraint firstItem="wt2-SH-1v5" firstAttribute="trailing" secondItem="Kyq-dF-Fwl" secondAttribute="trailing" constant="20" id="9NJ-0h-cFA"/>
+                            <constraint firstItem="uZE-Vq-LUc" firstAttribute="top" secondItem="P9w-9N-kqD" secondAttribute="bottom" constant="21" id="A3K-vA-7Fn"/>
+                            <constraint firstItem="Kyq-dF-Fwl" firstAttribute="top" secondItem="XiP-gy-WiP" secondAttribute="bottom" constant="33" id="C4f-c4-Kkh"/>
+                            <constraint firstItem="uZE-Vq-LUc" firstAttribute="leading" secondItem="P9w-9N-kqD" secondAttribute="leading" id="EST-B4-zQ0"/>
+                            <constraint firstItem="uZE-Vq-LUc" firstAttribute="top" secondItem="P9w-9N-kqD" secondAttribute="bottom" constant="21" id="FfM-ie-4GO"/>
+                            <constraint firstItem="XiP-gy-WiP" firstAttribute="leading" secondItem="wt2-SH-1v5" secondAttribute="leading" constant="20" id="O5U-1e-cKl"/>
+                            <constraint firstItem="XiP-gy-WiP" firstAttribute="top" secondItem="u9q-wk-4Q8" secondAttribute="bottom" constant="8" id="RXp-Pd-WDC"/>
+                            <constraint firstItem="wt2-SH-1v5" firstAttribute="trailing" secondItem="XiP-gy-WiP" secondAttribute="trailing" constant="20" id="VUy-Dr-mn4"/>
+                            <constraint firstItem="P9w-9N-kqD" firstAttribute="leading" secondItem="wt2-SH-1v5" secondAttribute="leading" constant="20" id="Wjc-e1-qoJ"/>
+                            <constraint firstItem="P9w-9N-kqD" firstAttribute="top" secondItem="Kyq-dF-Fwl" secondAttribute="bottom" constant="18" id="ZBT-O5-skK"/>
+                            <constraint firstItem="wt2-SH-1v5" firstAttribute="trailing" secondItem="P9w-9N-kqD" secondAttribute="trailing" constant="20" id="agQ-2R-2YT"/>
+                            <constraint firstItem="Kyq-dF-Fwl" firstAttribute="leading" secondItem="wt2-SH-1v5" secondAttribute="leading" constant="20" id="iU9-Ha-f5P"/>
+                            <constraint firstItem="P9w-9N-kqD" firstAttribute="top" secondItem="Kyq-dF-Fwl" secondAttribute="bottom" constant="18" id="w9A-Iu-ARv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wt2-SH-1v5"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pokemon" id="WSP-jf-6WK"/>
+                    <connections>
+                        <outlet property="abilitiesLabel" destination="uZE-Vq-LUc" id="7Ol-aS-UW6"/>
+                        <outlet property="idLabel" destination="Kyq-dF-Fwl" id="CML-fi-ZEd"/>
+                        <outlet property="nameLabel" destination="u9q-wk-4Q8" id="gUi-mA-ddU"/>
+                        <outlet property="pokeImage" destination="XiP-gy-WiP" id="Ird-jz-jTJ"/>
+                        <outlet property="typesLabel" destination="P9w-9N-kqD" id="qvT-BV-cnI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n5N-UF-OPR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815.94202898550736" y="478.79464285714283"/>
         </scene>
         <!--Pokemon Search-->
         <scene sceneID="GcB-wa-VLf">
@@ -164,7 +240,4 @@
             <point key="canvasLocation" x="-872" y="127"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="asl-hA-ur5"/>
-    </inferredMetricsTieBreakers>
 </document>

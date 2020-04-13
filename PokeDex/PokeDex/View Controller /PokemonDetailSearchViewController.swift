@@ -18,16 +18,17 @@ class PokemonDetailSearchViewController: UIViewController {
     @IBOutlet weak var abilitiesLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     
-    let apiController = APIController()
+    var apiController: APIController?
     var pokemon: Pokemon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideLables()
         
-        
         searchBar.delegate = self
     }
+    
+    
     
     
     
@@ -81,8 +82,9 @@ class PokemonDetailSearchViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let pokemon = pokemon else { return }
         print("THIS IS My NEW Pokemon", pokemon)
-        apiController.pokemons.append(pokemon)
-        print("This is my new array", apiController.pokemons)
+        apiController?.pokemons.append(pokemon)
+        apiController?.saveToPersistentStore()
+        print("This is my new array", apiController?.pokemons)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -94,7 +96,7 @@ extension PokemonDetailSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else { return }
-        apiController.searchForPokemon(with: searchTerm.lowercased()) { (result) in
+        apiController?.searchForPokemon(with: searchTerm.lowercased()) { (result) in
             
             do {
                 let pokemon = try result.get()
@@ -103,7 +105,7 @@ extension PokemonDetailSearchViewController: UISearchBarDelegate {
                     self.updateViews()
                 }
                 
-                self.apiController.getPokeImage(urlString: pokemon.sprites.front_default, completion: { (result) in
+                self.apiController?.getPokeImage(urlString: pokemon.sprites.front_default, completion: { (result) in
                     if let pokeImage = try? result.get() {
                         DispatchQueue.main.async {
                             self.pokeImageVIew.image = pokeImage
